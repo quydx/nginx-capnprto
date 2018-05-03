@@ -1,4 +1,4 @@
 git status
 git add .
 git commit -a -m "$1"
-git push origin dev
+git push
