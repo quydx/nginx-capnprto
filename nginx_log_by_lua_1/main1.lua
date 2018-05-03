@@ -26,7 +26,7 @@ tcp:connect(host, port);
 -- local bin = logs.Logs.serialize(data)
 -- local decoded = logs.Logs.parse(bin)
 
-local client = capnp.TwoPartyClient(s)
+local client = capnp.TwoPartyClient(tcp)
 local tempconv = client.bootstrap().cast_as(tempconv_capnp.TempConv)
 
 local request = tempconv.convert_request()
@@ -37,7 +37,7 @@ local request.target_unit = 'k'
 
 local promise = request.send()
 
-tcp:send(bin);
+-- tcp:send(bin);
 
 ngx.say('send to server ' + cjson.encode(decoded))
 
